@@ -11,7 +11,7 @@ pipeline {
       stage('Build docker') {
          steps {
             script {
-          dockerImage = docker.build registry
+          sh 'docker build -t 140744541048.dkr.ecr.us-east-1.amazonaws.com/myreg:myapp2 .'
         
          }
          }
