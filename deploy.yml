@@ -23,3 +23,17 @@ spec:
              name: mysql-configmap
         ports:
         - containerPort: 5002
+        
+        readinessProbe:
+            initialDelaySeconds: 35
+            periodSeconds: 20
+            httpGet:
+              port: 5002
+              path: /
+
+        livenessProbe:
+            initialDelaySeconds: 35
+            periodSeconds: 20
+            httpGet:
+              port: 5002
+              path: /
