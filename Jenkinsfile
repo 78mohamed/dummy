@@ -2,29 +2,24 @@
 
 pipeline {
    agent any
-   environment {
-        registry = "140744541048.dkr.ecr.us-east-1.amazonaws.com/myreg"
+    parameters {
+        string(name: 'access', description: 'aws access key')
+        string(name: 'secret', description: 'aws secret key')
     }
    stages {
       
       
-      stage('Build docker') {
+      stage('configure aws and access eks cluster') {
          steps {
             script {
-          sh 'docker build -t 140744541048.dkr.ecr.us-east-1.amazonaws.com/myreg:myapp2 .'
+          sh 'aws configure set aws_access_key_id ${params.access} && aws configure set aws_secret_access_key ${params.secret}'
+          sh 'aws eks --region us-east-1 update-kubeconfig --name myeks'
         
          }
          }
       }
-      stage('push docker') {
-         steps {
-            script {
-          sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 140744541048.dkr.ecr.us-east-1.amazonaws.com'
-          sh 'docker push 140744541048.dkr.ecr.us-east-1.amazonaws.com/myreg:myapp2'
-        
-         }
-         }
-      }
+      
+      
       
    }
 }
