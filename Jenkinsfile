@@ -22,7 +22,7 @@ pipeline {
       stage('deploy kubernates files') {
          steps {
             script {
-          sh "kubectl apply ns.yml"
+          sh "kubectl apply -f ns.yml"
         
          }
          }
