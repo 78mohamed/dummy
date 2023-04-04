@@ -23,6 +23,11 @@ pipeline {
          steps {
             script {
           sh "kubectl apply -f ns.yml"
+          sh "kubectl apply -f pv.yml"
+          sh "kubectl apply -f services.yml"
+          sh "kubectl apply -f config.yml"
+          sh "kubectl apply -f statfulset.yml"
+          sh "kubectl apply -f deploy.yml"
         
          }
          }
