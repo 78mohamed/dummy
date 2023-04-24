@@ -28,7 +28,7 @@ pipeline {
           sh "kubectl apply -f config.yml"
           sh "kubectl apply -f statfulset.yml"
           sh "kubectl apply -f deploy.yml"
-          sh "kubectl apply -f nodeports"
+          sh "kubectl apply -f nodeport"
         
          }
          }
