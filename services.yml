@@ -20,8 +20,9 @@ metadata:
 spec:
   selector:
     app: app
-  type: ClusterIP
   ports:
-    - protocol: TCP
-      port: 80
+    - name: http
+      port: 5002
       targetPort: 5002
+  type: ClusterIP
+
