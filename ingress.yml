@@ -13,7 +13,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: flask-service
+            name: app-service
             port:
               name: http
 
